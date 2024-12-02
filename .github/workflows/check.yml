@@ -41,6 +41,12 @@ jobs:
     steps:
       - name: Checkout Warewulf
         uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Clean Go module cache
+        run: go clean -modcache
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
@@ -55,14 +61,12 @@ jobs:
     steps:
       - name: Checkout Warewulf
         uses: actions/checkout@v4
-      - name: Clear cache
-        run: go clean -cache -modcache -i -r
-      - name: Uninstall existing Go versions
-        run: sudo rm -rf /usr/local/go
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go-version }}
+      - name: Clean Go module cache
+        run: go clean -modcache
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
@@ -77,6 +81,12 @@ jobs:
     steps:
       - name: Checkout Warewulf
         uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
+      - name: Clean Go module cache
+        run: go clean -modcache
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
