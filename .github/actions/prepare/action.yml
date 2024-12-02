@@ -20,8 +20,6 @@ runs:
       uses: actions/setup-go@v5
       with:
         go-version: ${{ inputs.go-version }}
-        cache: false
-        check-latest: false
 
     - name: Configure Warewulf
       run: make config
