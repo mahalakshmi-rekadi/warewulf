@@ -58,6 +58,8 @@ jobs:
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
+          cache: false
+          check-latest: false
       - name: Check for dead Warewulf code (golang ${{ matrix.go-version }})
         run: make deadcode
 
