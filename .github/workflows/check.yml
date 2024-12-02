@@ -55,6 +55,8 @@ jobs:
     steps:
       - name: Checkout Warewulf
         uses: actions/checkout@v4
+      - name: Clear cache
+        run: go clean -cache -modcache -i -r
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
