@@ -51,14 +51,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ['1.21', '1.22']
+        go-version: ['1.21', '1.22','1.23']
     steps:
       - name: Checkout Warewulf
         uses: actions/checkout@v4
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
-          check-latest: false
       - name: Check for dead Warewulf code (golang ${{ matrix.go-version }})
         run: make deadcode
 
