@@ -57,6 +57,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Clear cache
         run: go clean -cache -modcache -i -r
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ matrix.go-version }}
       - uses: ./.github/actions/prepare
         with:
           go-version: ${{ matrix.go-version }}
